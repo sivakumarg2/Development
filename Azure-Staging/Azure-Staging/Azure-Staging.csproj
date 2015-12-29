@@ -118,6 +118,7 @@
     <Content Include="bower_components\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\bootstrap-sass-official\assets\javascripts\bootstrap.js" />
+    <Content Include="bower_components\bootstrap\dist\js\bootstrap.js" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\rem.jpg" />
@@ -268,9 +269,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bower_components\bootstrap\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include=".buildignore" />
     <Content Include=".htaccess" />
