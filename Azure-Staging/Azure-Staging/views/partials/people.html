@@ -1,0 +1,155 @@
+<div class="container people-page" ng-controller="PeopleController">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="tag-list">
+				<li ng-repeat="locationSearched in locationsSearched">
+					<div class="label label-default">
+						{{locationSearched}}
+						<span class="fa fa-times" ng-click="removeTag('location', locationSearched)"></span>
+					</div>
+				</li>
+				<li ng-repeat="skillSearched in skillsSearched">
+					<div class="label label-default">
+						{{skillSearched}}
+						<span class="fa fa-times" ng-click="removeTag('skill', skillSearched)"></span>
+					</div>
+				</li>
+				<li ng-repeat="roleSearched in rolesSearched">
+					<div class="label label-default">
+						{{roleSearched}}
+						<span class="fa fa-times" ng-click="removeTag('role', roleSearched)"></span>
+					</div>
+				</li>
+				<li ng-repeat="experienceSearched in experiencesSearched">
+					<div class="label label-default">
+						{{experienceSearched}}
+						<span class="fa fa-times" ng-click="removeTag('experience', experienceSearched)"></span>
+					</div>
+				</li>
+				<li ng-repeat="educationSearched in educationsSearched">
+					<div class="label label-default">
+						{{educationSearched}}
+						<span class="fa fa-times" ng-click="removeTag('education', educationSearched)"></span>
+					</div>
+				</li>
+				<li ng-repeat="marketSearched in marketsSearched">
+					<div class="label label-default">
+						{{marketSearched}}
+						<span class="fa fa-times" ng-click="removeTag('market', marketSearched)"></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-pills">
+			  <li class="dropdown">
+			    <a>
+			      Location <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			    	<li>
+			    		<input class="form-control" type="text" ng-model="locationSelected" placeholder="Location" uib-typeahead="location as location.tag_name for location in locationTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'location')">
+			    	</li>
+			      <li>Location 1</li>
+			      <li>Location 2</li>
+			    </ul>
+			  </li>
+			  <li class="dropdown">
+			    <a>
+			      Skill <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			      <li>
+			      	<input class="form-control" type="text" ng-model="skillSelected" placeholder="Skills" uib-typeahead="skill as skill.tag_name for skill in skillTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'skill')">
+			      </li>
+			      <li>Skill 1</li>
+			      <li>Skill 2</li>
+			    </ul>
+			  </li>
+			  <li class="dropdown">
+			    <a>
+			      Role <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			      <li>
+			      	<input class="form-control" type="text" ng-model="roleSelected" placeholder="Roles" uib-typeahead="role as role.tag_name for role in roleTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'role')">
+			      </li>
+			      <li>Role 1</li>
+			      <li>Role 2</li>
+			    </ul>
+			  </li>
+			  <li class="dropdown">
+			    <a>
+			      Experience <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			      <li>
+			      	<input class="form-control" type="text" ng-model="experienceSelected" placeholder="Experiences" uib-typeahead="experience as experience.tag_name for experience in experienceTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'experience')">
+			      </li>
+			      <li>Experience 1</li>
+			      <li>Experience 2</li>
+			    </ul>
+			  </li>
+			  <li class="dropdown">
+			    <a>
+			      Education <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			      <li>
+			      	<input class="form-control" type="text" ng-model="educationSelected" placeholder="Education" uib-typeahead="education as education.tag_name for education in educationTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'education')">
+			      </li>
+			      <li>Education 1</li>
+			      <li>Education 2</li>
+			    </ul>
+			  </li>
+			  <li class="dropdown">
+			    <a>
+			      Market <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			      <li>
+			      	<input class="form-control" type="text" ng-model="marketSelected" placeholder="Markets" uib-typeahead="market as market.tag_name for market in marketTags | filter:{tag_name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" ng-keyup="selectTag()" typeahead-on-select="onSelect($item, $model, $label, 'market')">
+			      </li>
+			      <li>Market 1</li>
+			      <li>Market 2</li>
+			    </ul>
+			  </li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="companyUser in companyUsersFiltered">
+					<h4 class="list-group-item-heading">{{companyUser.name}}</h4>
+					<p class="list-group-item-text">
+						<span class="fa fa-map-marker"></span>  {{companyUser.location}}
+						<span class="fa fa-briefcase"></span>
+						{{companyUser.skill}}
+						<span class="fa fa-smile-o"></span>
+						{{companyUser.role}}
+						<span class="fa fa-building-o"></span>
+						{{companyUser.experience}}
+						<span class="fa fa-graduation-cap"></span>
+						{{companyUser.education}}
+						<span class="fa fa-users"></span>
+						{{companyUser.market}}
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+      <span>{{match.model.count}} Tags</span>
+  </a>
+</script>
